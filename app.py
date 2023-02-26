@@ -114,9 +114,9 @@ selector = alt.selection_single(name="SelectorName", fields=['cutoff'],
                                 bind=slider, init={'cutoff': 0.5})
 c = alt.Chart(annotations_df).mark_circle().encode(
     x='timestamp', y='sentiment',
-     tooltip=['tweet','bp_label']) ,color=alt.condition(
+     tooltip=['tweet','bp_label'] ,color=alt.condition(
         alt.datum.sentiment < selector.cutoff,
-        alt.value('red'), alt.value('blue')).add_selection(
+        alt.value('red'), alt.value('blue'))).add_selection(
     selector
 )
 
