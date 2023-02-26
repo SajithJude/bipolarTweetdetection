@@ -94,11 +94,7 @@ selector = alt.selection_single(name="SelectorName", fields=['cutoff'],
 
 input_dropdown = alt.binding_select(options=['True', 'False'], name='bp_label')
 selection = alt.selection_single(fields=['False'], bind=input_dropdown, init={'bp_label': 'True'})
-opacity=alt.condition(
-        alt.datum.bp_label == 'False',
-        alt.value(0),
-        alt.value(1)
-    )
+
 
 
 
@@ -118,11 +114,11 @@ st.subheader("Bipolar Labeled")
 
 bp = alt.Chart(annotations_df).mark_circle().encode(
     x='timestamp', y='sentiment',opacity=alt.condition(
-        alt.datum.bp_label == 'False',
+        alt.datum.bp_label == 'True',
         alt.value(0),
         alt.value(1)
     )
-    , tooltip=['tweet','bp_label:N'] ).add_selection(
+    ).add_selection(
     selection
 )
 
