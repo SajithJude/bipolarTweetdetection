@@ -116,9 +116,9 @@ c = alt.Chart(annotations_df).mark_circle().encode(
     x='timestamp', y='sentiment', color=alt.condition(
         alt.datum.sentiment < selector.cutoff,
         alt.value('red'), alt.value('blue'),
-     tooltip=['timestamp', 'sentiment','tweet','bp_label']).add_selection(
+     tooltip=['timestamp', 'sentiment','tweet','bp_label'])).add_selection(
     selector
 )
-)
+
 # Display both charts together
 st.altair_chart((c).interactive(), theme="streamlit",use_container_width=True)
