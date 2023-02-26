@@ -3,6 +3,7 @@ import pandas as pd
 import altair as alt
 from textblob import TextBlob
 
+alt.themes.enable("streamlit")
 # Define a function to get sentiment analysis
 def get_sentiment(text):
     return TextBlob(text).sentiment.polarity
