@@ -76,11 +76,11 @@ with col1:
     ticker = st.text_input("Choose a ticker (⬇💬👇ℹ️ ...)", value="⬇")
 with col2:
     ticker_dx = st.slider(
-        "Horizontal offset", min_value=-3000, max_value=3000, step=1, value=0
+        "Horizontal offset", min_value=-30000, max_value=30000, step=1, value=0
     )
 with col3:
     ticker_dy = st.slider(
-        "Vertical offset", min_value=-3000, max_value=3000, step=1, value=-1000
+        "Vertical offset", min_value=-30000, max_value=30000, step=1, value=-1000
     )
 
 # Original time series chart. Omitted `get_chart` for clarity
@@ -109,7 +109,7 @@ annotations_df["y"] = 0
 #     )
 #     .interactive()
 # )
-slider = alt.binding_range(min=-, max=1, step=0.01, name='SentimentFilter:')
+slider = alt.binding_range(min=-1, max=1, step=0.01, name='SentimentFilter:')
 selector = alt.selection_single(name="SelectorName", fields=['cutoff'],
                                 bind=slider, init={'cutoff': 0.5})
 c = alt.Chart(annotations_df).mark_circle().encode(
