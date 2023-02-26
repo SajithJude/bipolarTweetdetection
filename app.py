@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 from textblob import TextBlob
+import os
 
 alt.themes.enable("streamlit")
 # Define a function to get sentiment analysis
