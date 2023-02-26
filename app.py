@@ -26,6 +26,7 @@ def get_data():
     # Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
     data['sentiment'] = sentiments
     st.dataframe(data, width=800, height=500)
+    return data
 
 
 
