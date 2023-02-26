@@ -10,7 +10,7 @@ def get_sentiment(text):
 # Define a function to plot the timeseries graph
 def plot_timeseries(df):
     fig, ax = plt.subplots()
-    ax.plot(df.index, df['bp_label'])
+    ax.plot(df.index, df['sentiment'])
     ax.set_title('Sentiment Analysis over Time')
     ax.set_xlabel('Date')
     ax.set_ylabel('Sentiment Score')
