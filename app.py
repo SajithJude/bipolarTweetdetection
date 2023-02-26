@@ -112,12 +112,21 @@ annotations_df["y"] = 0
 slider = alt.binding_range(min=-1, max=1, step=0.01, name='SentimentFilter:')
 selector = alt.selection_single(name="SelectorName", fields=['cutoff'],
                                 bind=slider, init={'cutoff': 0.5})
-c = alt.Chart(annotations_df).mark_circle().encode(
+
+input_dropdown = alt.binding_select(options=['False','True',], name='bp_label')
+selection = alt.selection_single(fields=['bp_label'], bind=input_dropdown)
+color = alt.condition(selection,
+                    alt.Color('bp_label:N', legend=None),
+                    alt.value('lightgray'))
+
+
+
+c = alt.Chart(annotations_df).mark_point().encode(
     x='timestamp', y='sentiment',
      tooltip=['tweet','bp_label'] ,color=alt.condition(
         alt.datum.sentiment < selector.cutoff,
         alt.value('red'), alt.value('blue'))).add_selection(
-    selector
+    selector,selection
 )
 
 # Display both charts together
