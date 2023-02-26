@@ -94,7 +94,7 @@ selector = alt.selection_single(name="SelectorName", fields=['cutoff'],
 
 input_dropdown = alt.binding_select(options=['False','True',], name='bp_label')
 selection = alt.selection_single(fields=['bp_label'], bind=input_dropdown)
-color = alt.condition(selection,
+colaor = alt.condition(selection,
                     alt.Color('bp_label:N', legend=None),
                     alt.value('green'))
 
@@ -105,11 +105,23 @@ c = alt.Chart(annotations_df).mark_point().encode(
      tooltip=['tweet','bp_label'] ,color=alt.condition(
         alt.datum.sentiment < selector.cutoff,
         alt.value('red'), alt.value('blue'))).add_selection(
-    selector,selection
+    selector
 )
 
 # Display both charts together
 st.altair_chart((c).interactive(), theme="streamlit",use_container_width=True)
+
+st.subheader("Bipolar Labeled")
+
+
+bp = alt.Chart(annotations_df).mark_rule().encode(
+    x='timestamp', y='sentiment',
+     tooltip=['tweet','bp_label'] ,color=colaor).add_selection(
+    selection
+)
+
+# Display both charts together
+st.altair_chart((bp).interactive(), theme="streamlit",use_container_width=True)
 
 
 st.subheader("Dataset")
