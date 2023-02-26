@@ -10,6 +10,9 @@ def get_sentiment(text):
     return TextBlob(text).sentiment.polarity
 
 
+def get_keyword(text):
+    return TextBlob(text).noun_phrases
+
 
 
 st.set_page_config(
@@ -69,17 +72,21 @@ directory = 'data'
 csv_files = [f for f in os.listdir(directory) if f.endswith('.csv')]
 
 # Create a selectbox widget to allow the user to choose a CSV file
-selected_file = st.selectbox('Select a User', csv_files)
+selected_file = st.sidebar.selectbox('Select a User', csv_files)
 
 # Use pandas to read the selected file into a dataframe
 data = pd.read_csv(os.path.join(directory, selected_file))
 
 sentiments = []
+keywords = []
 for text in data['tweet']:
     sentiment = get_sentiment(str(text))
     sentiments.append(sentiment)
+    keey = get_keyword(str(text))
+    keywords.append(keey)
 # Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
 data['sentiment'] = sentiments
+data['keywords'] = keey
 source = data
 
 
