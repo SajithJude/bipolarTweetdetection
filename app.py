@@ -116,7 +116,7 @@ st.altair_chart((c).interactive(), theme="streamlit",use_container_width=True)
 st.subheader("Bipolar Labeled")
 
 
-dropdown = alt.binding_select(options=['True', 'False'], name='bp_label')
+dropdown = alt.binding_select(options=['True', 'False'], name='bipolar_label')
 selection = alt.selection_single(fields=['bp_label:N'], bind=dropdown, name='Select')
 
 
