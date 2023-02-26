@@ -22,7 +22,7 @@ data['timestamp'] = pd.to_datetime(data['timestamp'])
 
 st.dataframe(data, width=800, height=500)
 # Calculate sentiment score for each row
-dt = pd.dataframe()
+dt = pd.DataFrame()
 dt= data['tweet'].apply(get_sentiment)
 
 # Group the data by date and calculate the mean sentiment score
