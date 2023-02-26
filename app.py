@@ -22,7 +22,7 @@ data = pd.read_csv('user_1.csv', index_col=1)
 
 sentiments = []
 for text in data['tweet']:
-    sentiment = get_sentiment(text)
+    sentiment = get_sentiment(str(text))
     sentiments.append(sentiment)
 
 # Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
