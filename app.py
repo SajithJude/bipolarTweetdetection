@@ -17,7 +17,7 @@ def plot_timeseries(df):
     st.pyplot(fig)
 
 # Load the data
-data = pd.read_csv('user_1.csv', index_col=1)
+data = pd.read_csv('user_1.csv', index_col=0)
 # data['date'] = pd.to_datetime(data['timestamp'])
 
 sentiments = []
