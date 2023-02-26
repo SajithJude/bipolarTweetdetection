@@ -65,7 +65,7 @@ st.title("Bipolar Disorder Analytical Diagnostics")
 # 
 
 ########### select CSV##################
-directory = '/data/'
+directory = 'data'
 csv_files = [f for f in os.listdir(directory) if f.endswith('.csv')]
 
 # Create a selectbox widget to allow the user to choose a CSV file
