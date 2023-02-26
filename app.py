@@ -2,6 +2,7 @@ import streamlit as st
 import nltk
 import pandas as pd
 import altair as alt
+from wordcloud import WordCloud
 from textblob import TextBlob
 import os
 nltk.download('punkt')
@@ -80,14 +81,21 @@ selected_file = st.sidebar.selectbox('Select a User', csv_files)
 # Use pandas to read the selected file into a dataframe
 data = pd.read_csv(os.path.join(directory, selected_file))
 
+
 sentiments = []
 keywords = []
 for text in data['tweet']:
     sentiment = get_sentiment(str(text))
     sentiments.append(sentiment)
-    keey = get_keyword(str(text))
+    blob = TextBlob(text)
+    word_freq = {}
+        for word in blob.words:
+            word_freq[word.lower()] = word_freq.get(word.lower(), 0) + 1
+    wordcloud = WordCloud(width=800, height=800, background_color='white', max_words=100).generate_from_frequencies(word_freq)
+
+    # keey = get_keyword(str(text))
     # keywords_string = ', '.join(keywords)
-    keywords.append(keey)
+    keywords.append(word_freq)
 # Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
 data['sentiment'] = sentiments
 data['keywords'] = keywords
@@ -116,6 +124,8 @@ c = alt.Chart(annotations_df).mark_point().encode(
         alt.value('red'), alt.value('blue'))).add_selection(
     selector
 )
+
+
 
 
 
