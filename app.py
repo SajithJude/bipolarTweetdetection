@@ -20,6 +20,7 @@ def plot_timeseries(df):
 data = pd.read_csv('user_1.csv', index_col=0)
 data['timestamp'] = pd.to_datetime(data['timestamp'])
 
+st.dataframe(data, width=800, height=500, index=False, format='{:.2f}')
 # Calculate sentiment score for each row
 data['sentiment'] = data['tweet'].apply(get_sentiment)
 
