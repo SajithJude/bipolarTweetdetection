@@ -20,12 +20,12 @@ def get_keyword(text):
 
 
 st.set_page_config(
-    page_title="Bipolar Disorder Analytical Diagnosis", page_icon=":brain:", layout="wide"
+    page_title="Instancy", page_icon=":brain:", layout="wide"
 )
 
 
 
-st.title("Bipolar Disorder Analytical Diagnostics")
+st.title("Instancy")
 
 # 
 ########### select CSV##################
