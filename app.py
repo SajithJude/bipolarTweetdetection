@@ -112,7 +112,7 @@ st.altair_chart((c).interactive(), theme="streamlit",use_container_width=True)
 st.subheader("Bipolar Labeled")
 
 
-bp = alt.Chart(annotations_df).mark_circle().encode(
+bp = alt.Chart(annotations_df).mark_point().encode(
     x='timestamp', y='sentiment',opacity=alt.condition(
         alt.datum.bp_label == 'True',
         alt.value(0),
