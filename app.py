@@ -122,10 +122,11 @@ selection = alt.selection_single(fields=['bp_label'], bind=dropdown, name='Selec
 
 bp = alt.Chart(annotations_df).mark_circle().encode(
     x='timestamp', y='sentiment',
-     tooltip=['tweet','bp_label:N'] ,color=alt.condition(
+     tooltip=['tweet','bp_label'],
+     color=alt.condition(
         selection,
         alt.condition(
-            alt.datum.label == 'True',
+            alt.datum.bp_label == 'False',
             alt.value('gray'),
             alt.value('green')
         ),
