@@ -80,7 +80,7 @@ with col2:
     )
 with col3:
     ticker_dy = st.slider(
-        "Vertical offset", min_value=-3000, max_value=3000, step=1, value=-10
+        "Vertical offset", min_value=-3000, max_value=3000, step=1, value=-1000
     )
 
 # Original time series chart. Omitted `get_chart` for clarity
