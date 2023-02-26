@@ -96,7 +96,7 @@ source = data
 # ]
 
 # Create a chart with annotations
-annotations_df = pd.DataFrame(source, columns=["timestamp", "sentiment"])
+annotations_df = pd.DataFrame(source, columns=["timestamp", "sentiment","tweet"])
 annotations_df.timestamp = pd.to_datetime(annotations_df.timestamp)
 annotations_df["y"] = 0
 # annotation_layer = (
@@ -111,7 +111,7 @@ annotations_df["y"] = 0
 # )
 
 c = alt.Chart(annotations_df).mark_circle().encode(
-    x='timestamp', y='sentiment',  tooltip=['timestamp', 'sentiment'])
+    x='timestamp', y='sentiment',  tooltip=['timestamp', 'sentiment','tweet'])
 
 # Display both charts together
 st.altair_chart((c).interactive(), theme="streamlit",use_container_width=False)
