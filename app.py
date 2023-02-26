@@ -99,16 +99,16 @@ chart = get_chart(source)
 annotations_df = pd.DataFrame(source, columns=["timestamp", "tweet"])
 annotations_df.timestamp = pd.to_datetime(annotations_df.timestamp)
 annotations_df["y"] = 0
-annotation_layer = (
-    alt.Chart(annotations_df)
-    .mark_text(size=15, text=ticker, dx=ticker_dx, dy=ticker_dy, align="center")
-   .encode(
-        x="timestamp",
-        y="tweet",
-        tooltip=["tweet"],
-    )
-    .interactive()
-)
+# annotation_layer = (
+#     alt.Chart(annotations_df)
+#     .mark_text(size=15, text=ticker, dx=ticker_dx, dy=ticker_dy, align="center")
+#    .encode(
+#         x="timestamp",
+#         y="tweet",
+#         tooltip=["tweet"],
+#     )
+#     .interactive()
+# )
 
 # Display both charts together
-st.altair_chart((chart + annotation_layer).interactive(), use_container_width=True)
+st.altair_chart((chart).interactive(), use_container_width=True)
