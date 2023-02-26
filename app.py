@@ -25,7 +25,7 @@ st.dataframe(data, width=800, height=500)
 
 
 
-@st.experimental_memo(ttl=60 * 60 * 24)
+
 def get_chart(data):
     hover = alt.selection_single(
         fields=["timestamp"],
@@ -104,7 +104,7 @@ annotation_layer = (
    .encode(
         x="timestamp:T",
         y=alt.Y("y:Q"),
-        tooltip=["event"],
+        tooltip=["tweet"],
     )
     .interactive()
 )
