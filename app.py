@@ -35,4 +35,4 @@ st.dataframe(data, width=800, height=500)
 sentiment_by_date = data.groupby('timestamp')['sentiment'].mean()
 
 # Plot the timeseries graph
-#plot_timeseries(data)
+plot_timeseries(sentiment_by_date)
