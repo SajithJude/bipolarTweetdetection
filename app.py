@@ -87,16 +87,16 @@ if selected_file:
     for text in data['tweet']:
         sentiment = get_sentiment(str(text))
         sentiments.append(sentiment)
-        blob = TextBlob(text)
-        word_freq = {}
+    blob = TextBlob(text)
+    word_freq = {}
 
-        for word in blob.words:
-            word_freq[word.lower()] = word_freq.get(word.lower(), 0) + 1
-        wordcloud = WordCloud(width=800, height=800, background_color='white', max_words=100).generate_from_frequencies(word_freq)
+    for word in blob.words:
+        word_freq[word.lower()] = word_freq.get(word.lower(), 0) + 1
+    wordcloud = WordCloud(width=800, height=800, background_color='white', max_words=100).generate_from_frequencies(word_freq)
 
-        # keey = get_keyword(str(text))
-        # keywords_string = ', '.join(keywords)
-        keywords.append(word_freq)
+    # keey = get_keyword(str(text))
+    # keywords_string = ', '.join(keywords)
+    keywords.append(word_freq)
     # Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
     data['sentiment'] = sentiments
     data['keywords'] = keywords
