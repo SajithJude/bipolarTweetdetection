@@ -121,7 +121,7 @@ bp = alt.Chart(annotations_df).mark_point().encode(
 )
 
 # Display both charts together
-st.altair_chart((bp).interactive(), theme="streamlit",use_container_width=True)
+st.altair_chart((bp), theme="streamlit",use_container_width=True)
 
 
 st.subheader("Dataset")
