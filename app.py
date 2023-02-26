@@ -90,16 +90,16 @@ with col3:
 source = get_data()
 chart = get_chart(source)
 
-# Input annotations
-ANNOTATIONS = [
-    ("Mar 01, 2008", "Pretty good day for GOOG"),
-    ("Dec 01, 2007", "Something's going wrong for GOOG & AAPL"),
-    ("Nov 01, 2008", "Market starts again thanks to..."),
-    ("Dec 01, 2009", "Small crash for GOOG after..."),
-]
+# # Input annotations
+# ANNOTATIONS = [
+#     ("Mar 01, 2008", "Pretty good day for GOOG"),
+#     ("Dec 01, 2007", "Something's going wrong for GOOG & AAPL"),
+#     ("Nov 01, 2008", "Market starts again thanks to..."),
+#     ("Dec 01, 2009", "Small crash for GOOG after..."),
+# ]
 
 # Create a chart with annotations
-annotations_df = pd.DataFrame(ANNOTATIONS, columns=["timestamp", "event"])
+annotations_df = pd.DataFrame(source, columns=["timestamp", "tweet"])
 # annotations_df.timestamp = pd.datetime(annotations_df.timestamp)
 annotations_df["y"] = 0
 annotation_layer = (
