@@ -114,4 +114,4 @@ annotation_layer = (
 )
 
 # Display both charts together
-st.altair_chart((chart + annotation_layer).interactive(), use_container_width=True)
+st.altair_chart((chart).interactive(), use_container_width=True)
