@@ -18,7 +18,7 @@ def plot_timeseries(df):
 
 # Load the data
 data = pd.read_csv('user_1.csv', index_col=1)
-data['date'] = pd.to_datetime(data['timestamp'])
+data['date'] = pd.to_datetime(data[['timestamp']])
 
 st.dataframe(data, width=800, height=500)
 # Calculate sentiment score for each row
