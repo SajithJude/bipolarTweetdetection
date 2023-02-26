@@ -10,7 +10,7 @@ def get_sentiment(text):
 # Define a function to plot the timeseries graph
 def plot_timeseries(df):
     fig, ax = plt.subplots()
-    ax.plot(df.index, df['sentiment'])
+    ax.plot(df.index, df['bp_label'])
     ax.set_title('Sentiment Analysis over Time')
     ax.set_xlabel('Date')
     ax.set_ylabel('Sentiment Score')
@@ -22,11 +22,11 @@ data['timestamp'] = pd.to_datetime(data['timestamp'])
 
 st.dataframe(data, width=800, height=500)
 # Calculate sentiment score for each row
-dt = pd.DataFrame()
-dt= data['tweet'].apply(get_sentiment)
+# dt = pd.DataFrame()
+# dt= data['tweet'].apply(get_sentiment)
 
 # Group the data by date and calculate the mean sentiment score
-sentiment_by_date = data.groupby('date')['sentiment'].mean()
+sentiment_by_date = data.groupby('timestamp')['bp_label'].mean()
 
 # Plot the timeseries graph
 plot_timeseries(sentiment_by_date)
