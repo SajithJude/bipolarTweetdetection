@@ -114,4 +114,4 @@ c = alt.Chart(annotations_df).mark_circle().encode(
     x='timestamp', y='tweet', size='sentiment', color='c', tooltip=['timestamp', 'tweet', 'sentiment'])
 
 # Display both charts together
-st.altair_chart((c).interactive(), use_container_width=True)
+st.altair_chart((c).interactive(), theme="streamlit",use_container_width=False)
