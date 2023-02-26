@@ -92,8 +92,8 @@ slider = alt.binding_range(min=-1, max=1, step=0.01, name='SentimentFilter:')
 selector = alt.selection_single(name="SelectorName", fields=['cutoff'],
                                 bind=slider, init={'cutoff': 0.5})
 
-input_dropdown = alt.binding_select(options=['False','True',], name='bp_label')
-selection = alt.selection_single(fields=['True'], bind=input_dropdown)
+input_dropdown = alt.binding_select(options=['True'], name='bp_label')
+selection = alt.selection_single(fields=['True','False'], bind=input_dropdown)
 colaor = alt.condition(selection,
                     alt.Color('bp_label:N', legend=None),
                     alt.value('green'))
