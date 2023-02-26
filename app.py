@@ -92,13 +92,13 @@ slider = alt.binding_range(min=-1, max=1, step=0.01, name='SentimentFilter:')
 selector = alt.selection_single(name="SelectorName", fields=['cutoff'],
                                 bind=slider, init={'cutoff': 0.5})
 
-input_dropdown = alt.binding_select(options=['True', 'False'], name='bp_label')
-selection = alt.selection_single(fields=['False'], bind=input_dropdown)
-colaor = alt.condition(
- alt.datum.bp_label == 'False',
-        alt.value('gray'),
-        alt.value('blue')
-                    )
+# input_dropdown = alt.binding_select(options=['True', 'False'], name='bp_label')
+# selection = alt.selection_single(fields=['False'], bind=input_dropdown)
+# colaor = alt.condition(
+#  alt.datum.bp_label == 'False',
+#         alt.value('gray'),
+#         alt.value('blue')
+#                     )
 
 
 
@@ -116,10 +116,22 @@ st.altair_chart((c).interactive(), theme="streamlit",use_container_width=True)
 st.subheader("Bipolar Labeled")
 
 
+dropdown = alt.binding_select(options=['True', 'False'], name='bp_label')
+selection = alt.selection_single(fields=['bp_label'], bind=dropdown, name='Select')
+
+
 bp = alt.Chart(annotations_df).mark_circle().encode(
     x='timestamp', y='sentiment',
-     tooltip=['tweet','bp_label:N'] ,color=colaor)
-
+     tooltip=['tweet','bp_label:N'] ,color=alt.condition(
+        selection,
+        alt.condition(
+            alt.datum.label == 'True',
+            alt.value('gray'),
+            alt.value('green')
+        ),
+        alt.value('gray')
+    )
+).add_selection(selection)
 # Display both charts together
 st.altair_chart((bp).interactive(), theme="streamlit",use_container_width=True)
 
