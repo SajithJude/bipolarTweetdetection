@@ -107,7 +107,7 @@ annotation_layer = (
     .mark_text(size=15, text=ticker, dx=ticker_dx, dy=ticker_dy, align="center")
     .encode(
         x="timestamp",
-        y="tweet",
+        y="sentiment",
         tooltip=["tweet"],
     )
     .interactive()
