@@ -95,8 +95,10 @@ selector = alt.selection_single(name="SelectorName", fields=['cutoff'],
 input_dropdown = alt.binding_select(options=['True', 'False'], name='bp_label')
 selection = alt.selection_single(fields=['False'], bind=input_dropdown)
 colaor = alt.condition(selection,
-                    alt.Color('bp_label:N', legend=None),
-                    alt.value('green'))
+ alt.datum.bp_label == 'False',
+        alt.value('gray'),
+        alt.value('blue')
+                    )
 
 
 
