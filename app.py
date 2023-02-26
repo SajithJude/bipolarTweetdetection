@@ -110,7 +110,7 @@ annotations_df["y"] = 0
 #     .interactive()
 # )
 
-c = alt.Chart(annotations_df).mark_circle().encode(
+c = alt.Chart(annotations_df).mark_line().encode(
     x='timestamp', y='sentiment',  tooltip=['timestamp', 'sentiment','tweet','bp_label'])
 
 # Display both charts together
