@@ -109,20 +109,6 @@ c = alt.Chart(annotations_df).mark_point().encode(
 # Display both charts together
 st.altair_chart((c).interactive(), theme="streamlit",use_container_width=True)
 
-st.subheader("Bipolar Labeled")
-
-
-bp = alt.Chart(annotations_df).mark_point().encode(
-    x='timestamp', y='sentiment',opacity=alt.condition(
-        alt.datum.bp_label == 'True',
-        alt.value(0),
-        alt.value(1))).add_selection(
-    selection
-)
-
-# Display both charts together
-st.altair_chart((bp), theme="streamlit",use_container_width=True)
-
 
 st.subheader("Dataset")
 
