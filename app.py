@@ -16,13 +16,6 @@ st.set_page_config(
 )
 
 # data = pd.read_csv('user_1.csv')
-sentiments = []
-for text in data['tweet']:
-    sentiment = get_sentiment(str(text))
-    sentiments.append(sentiment)
-# Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
-data['sentiment'] = sentiments
-
 
 
 
@@ -107,6 +100,13 @@ selected_file = st.selectbox('Select a User', csv_files)
 
 # Use pandas to read the selected file into a dataframe
 data = pd.read_csv(os.path.join(directory, selected_file))
+
+sentiments = []
+for text in data['tweet']:
+    sentiment = get_sentiment(str(text))
+    sentiments.append(sentiment)
+# Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
+data['sentiment'] = sentiments
 
 
 
