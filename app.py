@@ -17,11 +17,11 @@ def plot_timeseries(df):
     st.pyplot(fig)
 
 # Load the data
-data = pd.read_csv('data.csv', index_col=0)
-data['date'] = pd.to_datetime(data['date'])
+data = pd.read_csv('user_1.csv', index_col=0)
+data['timestamp'] = pd.to_datetime(data['timestamp'])
 
 # Calculate sentiment score for each row
-data['sentiment'] = data['text'].apply(get_sentiment)
+data['bp_label'] = data['tweet'].apply(get_sentiment)
 
 # Group the data by date and calculate the mean sentiment score
 sentiment_by_date = data.groupby('date')['sentiment'].mean()
