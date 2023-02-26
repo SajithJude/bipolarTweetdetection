@@ -12,7 +12,7 @@ def get_sentiment(text):
 
 
 st.set_page_config(
-    page_title="Time series annotations", page_icon="⬇", layout="centered"
+    page_title="Bipolar Disorder Analytical Diagnosis", page_icon=":brain:", layout="wide"
 )
 
 data = pd.read_csv('user_1.csv')
