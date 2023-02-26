@@ -56,7 +56,7 @@ def get_chart(data):
         alt.Chart(data)
         .mark_rule()
         .encode(
-            x="yearmonthdate(timestamp)",
+            x="timestamp",
             y="sentiment",
             opacity=alt.condition(hover, alt.value(0.3), alt.value(0)),
             tooltip=[
