@@ -56,7 +56,7 @@ def get_chart(data):
         alt.Chart(data)
         .mark_rule()
         .encode(
-            x="yearmonthtimestamp(timestamp)",
+            x="yearmonthdate(timestamp)",
             y="sentiment",
             opacity=alt.condition(hover, alt.value(0.3), alt.value(0)),
             tooltip=[
@@ -100,7 +100,7 @@ chart = get_chart(source)
 
 # Create a chart with annotations
 annotations_df = pd.DataFrame(source, columns=["timestamp", "tweet"])
-# annotations_df.timestamp = pd.datetime(annotations_df.timestamp)
+annotations_df.timestamp = pd.to_datetime(annotations_df.timestamp)
 annotations_df["y"] = 0
 annotation_layer = (
     alt.Chart(annotations_df)
