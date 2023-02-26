@@ -96,8 +96,8 @@ input_dropdown = alt.binding_select(options=['True', 'False'], name='bp_label')
 selection = alt.selection_single(fields=['False'], bind=input_dropdown, init={'bp_label': 'True'})
 colaor = alt.condition(
  alt.datum.bp_label == 'False',
+        alt.value('green'),
         alt.value('gray')
-       
                     )
 
 
