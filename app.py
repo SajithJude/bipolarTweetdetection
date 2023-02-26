@@ -116,9 +116,7 @@ bp = alt.Chart(annotations_df).mark_circle().encode(
     x='timestamp', y='sentiment',opacity=alt.condition(
         alt.datum.bp_label == 'True',
         alt.value(0),
-        alt.value(1)
-    )
-    ).add_selection(
+        alt.value(1))).add_selection(
     selection
 )
 
