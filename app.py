@@ -112,10 +112,10 @@ annotations_df["y"] = 0
 slider = alt.binding_range(min=0, max=100, step=1, name='cutoff:')
 selector = alt.selection_single(name="SelectorName", fields=['cutoff'],
                                 bind=slider, init={'cutoff': 0.5})
-c = alt.Chart(annotations_df).mark_line().encode(
+c = alt.Chart(annotations_df).mark_circle().encode(
     x='timestamp', y='sentiment', color=alt.condition(
         alt.datum.sentiment < selector.cutoff,
-        alt.value('red'), alt.value('blue')
+        alt.value('red'), alt.value('blue'),
      tooltip=['timestamp', 'sentiment','tweet','bp_label']).add_selection(
     selector
 )
