@@ -101,13 +101,13 @@ annotations_df["y"] = 0
 annotation_layer = (
     alt.Chart(annotations_df)
     .mark_text(size=15, text=ticker, dx=ticker_dx, dy=ticker_dy, align="center")
-    .encode(
-        x="timestamp",
-        y="sentiment",
-        tooltip=["tweet"],
+   .encode(
+        x="timestamp:T",
+        y=alt.Y("y:Q"),
+        tooltip=["event"],
     )
     .interactive()
 )
 
 # Display both charts together
-st.altair_chart((chart).interactive(), use_container_width=True)
+st.altair_chart((chart + annotation_layer).interactive(), use_container_width=True)
