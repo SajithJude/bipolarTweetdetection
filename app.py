@@ -117,8 +117,12 @@ st.subheader("Bipolar Labeled")
 
 
 bp = alt.Chart(annotations_df).mark_circle().encode(
-    x='timestamp', y='sentiment',
-     tooltip=['tweet','bp_label:N'] ,color=colaor).add_selection(
+    x='timestamp', y='sentiment',opacity=alt.condition(
+        alt.datum.bp_label == 'False',
+        alt.value(0),
+        alt.value(1)
+    )
+     tooltip=['tweet','bp_label:N'] ).add_selection(
     selection
 )
 
