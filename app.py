@@ -86,10 +86,11 @@ for text in data['tweet']:
     sentiment = get_sentiment(str(text))
     sentiments.append(sentiment)
     keey = get_keyword(str(text))
+    # keywords_string = ', '.join(keywords)
     keywords.append(keey)
 # Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
 data['sentiment'] = sentiments
-data['keywords'] = keey
+data['keywords'] = keywords
 source = data
 
 
