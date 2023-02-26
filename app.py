@@ -117,7 +117,7 @@ input_dropdown = alt.binding_select(options=['False','True',], name='bp_label')
 selection = alt.selection_single(fields=['bp_label'], bind=input_dropdown)
 color = alt.condition(selection,
                     alt.Color('bp_label:N', legend=None),
-                    alt.value('lightgray'))
+                    alt.value('green'))
 
 
 
