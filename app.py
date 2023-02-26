@@ -102,8 +102,8 @@ annotation_layer = (
     alt.Chart(annotations_df)
     .mark_text(size=15, text=ticker, dx=ticker_dx, dy=ticker_dy, align="center")
    .encode(
-        x="timestamp:T",
-        y=alt.Y("y:Q"),
+        x="timestamp",
+        y="tweet",
         tooltip=["tweet"],
     )
     .interactive()
