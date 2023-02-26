@@ -32,7 +32,7 @@ st.dataframe(data, width=800, height=500)
 # data['sentiment'] = data['tweet'].apply(get_sentiment)
 
 # Group the data by date and calculate the mean sentiment score
-# sentiment_by_date = data.groupby('date')['bp_label'].mean()
+sentiment_by_date = data.groupby('date')['sentiment'].mean()
 
 # Plot the timeseries graph
 #plot_timeseries(data)
