@@ -14,19 +14,14 @@ st.set_page_config(
     page_title="Time series annotations", page_icon="⬇", layout="centered"
 )
 
-
-@st.experimental_memo
-def get_data():
-    # Load the data
-    data = pd.read_csv('user_1.csv')
-    sentiments = []
-    for text in data['tweet']:
-        sentiment = get_sentiment(str(text))
-        sentiments.append(sentiment)
-    # Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
-    data['sentiment'] = sentiments
-    st.dataframe(data, width=800, height=500)
-    return data
+data = pd.read_csv('user_1.csv')
+sentiments = []
+for text in data['tweet']:
+    sentiment = get_sentiment(str(text))
+    sentiments.append(sentiment)
+# Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
+data['sentiment'] = sentiments
+st.dataframe(data, width=800, height=500)
 
 
 
@@ -88,7 +83,7 @@ with col3:
     )
 
 # Original time series chart. Omitted `get_chart` for clarity
-source = get_data()
+source = data
 chart = get_chart(source)
 
 # # Input annotations
