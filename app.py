@@ -1,4 +1,5 @@
 import streamlit as st
+import nltk
 import pandas as pd
 import altair as alt
 from textblob import TextBlob
