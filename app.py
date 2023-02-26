@@ -80,8 +80,6 @@ selected_file = st.sidebar.selectbox('Select a User', csv_files)
 if selected_file:
 # Use pandas to read the selected file into a dataframe
     data = pd.read_csv(os.path.join(directory, selected_file))
-
-
     sentiments = []
     keywords = []
     for text in data['tweet']:
@@ -99,7 +97,7 @@ if selected_file:
     keywords.append(word_freq)
     # Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
     data['sentiment'] = sentiments
-    data['keywords'] = keywords
+    # data['keywords'] = keywords
     source = data
     timeline = st.sidebar.slider("TimeLine", min_value=2008,
     max_value=2021,
