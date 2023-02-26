@@ -15,7 +15,7 @@ st.set_page_config(
     page_title="Bipolar Disorder Analytical Diagnosis", page_icon=":brain:", layout="wide"
 )
 
-data = pd.read_csv('user_1.csv')
+# data = pd.read_csv('user_1.csv')
 sentiments = []
 for text in data['tweet']:
     sentiment = get_sentiment(str(text))
@@ -78,16 +78,7 @@ source = data
 annotations_df = pd.DataFrame(source, columns=["timestamp", "sentiment","tweet","bp_label"])
 annotations_df.timestamp = pd.to_datetime(annotations_df.timestamp)
 annotations_df["y"] = 0
-# annotation_layer = (
-#     alt.Chart(annotations_df)
-#     .mark_text(size=15, text=ticker, dx=ticker_dx, dy=ticker_dy, align="center")
-#    .encode(
-#         x="timestamp",
-#         y="tweet",
-#         tooltip=["tweet"],
-#     )
-#     .interactive()
-# )
+
 slider = alt.binding_range(min=-1, max=1, step=0.01, name='SentimentFilter:')
 selector = alt.selection_single(name="SelectorName", fields=['cutoff'],
                                 bind=slider, init={'cutoff': 0.5})
@@ -106,6 +97,29 @@ c = alt.Chart(annotations_df).mark_point().encode(
     selector
 )
 
+
+########### select CSV##################
+directory = '/data/'
+csv_files = [f for f in os.listdir(directory) if f.endswith('.csv')]
+
+# Create a selectbox widget to allow the user to choose a CSV file
+selected_file = st.selectbox('Select a User', csv_files)
+
+# Use pandas to read the selected file into a dataframe
+data = pd.read_csv(os.path.join(directory, selected_file))
+
+
+
+timeline = st.sidebar.slider("TimeLine", min_value=2008,
+    max_value=2021,
+    value=(2010),
+    step=1)
+
+keyword_choice = st.sidebar.multiselect(
+    'Choose Keyword Filters:', keywords, default=keywords)
+
+st.sidebar.write("Final Year Undergraduate")
+st.sidebar.write("IIT (University of Westminster)")
 # Display both charts together
 st.altair_chart((c).interactive(), theme="streamlit",use_container_width=True)
 
