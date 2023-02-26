@@ -13,21 +13,16 @@ alt.themes.enable("streamlit")
 def get_sentiment(text):
     return TextBlob(text).sentiment.polarity
 
-
 def get_keyword(text):
     return TextBlob(text).noun_phrases
-
-
 
 st.set_page_config(
     page_title="Instancy", page_icon=":brain:", layout="wide"
 )
 
 
-
 st.title("Instancy")
 
-# 
 ########### select CSV##################
 directory = 'data'
 csv_files = [f for f in os.listdir(directory) if f.endswith('.csv')]
