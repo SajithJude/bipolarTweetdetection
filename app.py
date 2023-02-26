@@ -85,7 +85,7 @@ with col3:
 
 # Original time series chart. Omitted `get_chart` for clarity
 source = data
-chart = get_chart(source)
+# chart = get_chart(source)
 
 # # Input annotations
 # ANNOTATIONS = [
@@ -110,5 +110,8 @@ annotations_df["y"] = 0
 #     .interactive()
 # )
 
+c = alt.Chart(annotations_df).mark_circle().encode(
+    x='timestamp', y='tweet', size='sentiment', color='c', tooltip=['timestamp', 'tweet', 'sentiment'])
+
 # Display both charts together
-st.altair_chart((chart).interactive(), use_container_width=True)
+st.altair_chart((c).interactive(), use_container_width=True)
