@@ -4,6 +4,7 @@ import pandas as pd
 import altair as alt
 from textblob import TextBlob
 import os
+nltk.download('punkt')
 nltk.download('brown')
 
 alt.themes.enable("streamlit")
