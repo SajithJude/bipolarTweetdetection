@@ -117,7 +117,7 @@ st.subheader("Bipolar Labeled")
 
 
 dropdown = alt.binding_select(options=['True', 'False'], name='bp_label')
-selection = alt.selection_single(fields=['bp_label'], bind=dropdown, name='Select')
+selection = alt.selection_single(fields=['bp_label:N'], bind=dropdown, name='Select')
 
 
 bp = alt.Chart(annotations_df).mark_circle().encode(
