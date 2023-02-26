@@ -89,8 +89,9 @@ for text in data['tweet']:
     sentiments.append(sentiment)
     blob = TextBlob(text)
     word_freq = {}
-        for word in blob.words:
-            word_freq[word.lower()] = word_freq.get(word.lower(), 0) + 1
+
+    for word in blob.words:
+        word_freq[word.lower()] = word_freq.get(word.lower(), 0) + 1
     wordcloud = WordCloud(width=800, height=800, background_color='white', max_words=100).generate_from_frequencies(word_freq)
 
     # keey = get_keyword(str(text))
