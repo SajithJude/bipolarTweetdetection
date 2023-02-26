@@ -93,9 +93,9 @@ selector = alt.selection_single(name="SelectorName", fields=['cutoff'],
                                 bind=slider, init={'cutoff': 0.5})
 
 input_dropdown = alt.binding_select(options=['False','True',], name='bp_label')
-selection = alt.selection_single(fields=['bp_label'], bind=input_dropdown)
+selection = alt.selection_single(fields=['True'], bind=input_dropdown)
 colaor = alt.condition(selection,
-                    alt.Color('bp_label:False', legend=None),
+                    alt.Color('bp_label', legend=None),
                     alt.value('green'))
 
 
