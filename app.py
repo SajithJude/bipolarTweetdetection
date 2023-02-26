@@ -118,9 +118,7 @@ st.subheader("Bipolar Labeled")
 
 bp = alt.Chart(annotations_df).mark_circle().encode(
     x='timestamp', y='sentiment',
-     tooltip=['tweet','bp_label:N'] ,color=colaor).add_selection(
-    selection
-)
+     tooltip=['tweet','bp_label:N'] ,color=colaor)
 
 # Display both charts together
 st.altair_chart((bp).interactive(), theme="streamlit",use_container_width=True)
