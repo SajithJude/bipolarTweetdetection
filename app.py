@@ -122,7 +122,7 @@ bp = alt.Chart(annotations_df).mark_circle().encode(
         alt.value(0),
         alt.value(1)
     )
-     tooltip=['tweet','bp_label:N'] ).add_selection(
+    , tooltip=['tweet','bp_label:N'] ).add_selection(
     selection
 )
 
