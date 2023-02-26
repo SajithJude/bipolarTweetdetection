@@ -109,7 +109,7 @@ annotations_df["y"] = 0
 #     )
 #     .interactive()
 # )
-slider = alt.binding_range(min=0, max=1, step=0.01, name='cutoff:')
+slider = alt.binding_range(min=-, max=1, step=0.01, name='SentimentFilter:')
 selector = alt.selection_single(name="SelectorName", fields=['cutoff'],
                                 bind=slider, init={'cutoff': 0.5})
 c = alt.Chart(annotations_df).mark_circle().encode(
