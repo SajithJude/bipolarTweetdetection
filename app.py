@@ -106,7 +106,7 @@ if selected_file:
     value=(2010),
     step=1)
 
-    keyword_choice = st.sidebar.multiselect(    'Choose Keyword Filters:', keywords, default=keywords)
+    # keyword_choice = st.sidebar.multiselect(    'Choose Keyword Filters:', keywords, default=keywords)
 
     st.sidebar.write("Final Year Undergraduate")
     st.sidebar.write("IIT (University of Westminster)")
