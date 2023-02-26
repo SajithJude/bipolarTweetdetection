@@ -100,7 +100,7 @@ ANNOTATIONS = [
 
 # Create a chart with annotations
 annotations_df = pd.DataFrame(ANNOTATIONS, columns=["timestamp", "event"])
-annotations_df.timestamp = pd.to_timestamptime(annotations_df.timestamp)
+annotations_df.timestamp = pd.datetime(annotations_df.timestamp)
 annotations_df["y"] = 0
 annotation_layer = (
     alt.Chart(annotations_df)
