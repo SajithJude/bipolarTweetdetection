@@ -22,7 +22,6 @@ for text in data['tweet']:
     sentiments.append(sentiment)
 # Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
 data['sentiment'] = sentiments
-st.dataframe(data, width=800, height=500)
 
 
 
@@ -67,33 +66,13 @@ def get_chart(data):
     return (lines + points + tooltips).interactive()
 
 
-st.title("⬇ Time series annotations")
+st.title("Bipolar Disorder Analytical Diagnostics")
 
-st.write("Give more context to your time series using annotations!")
-
-col1, col2, col3 = st.columns(3)
-with col1:
-    ticker = st.text_input("Choose a ticker (⬇💬👇ℹ️ ...)", value="⬇")
-with col2:
-    ticker_dx = st.slider(
-        "Horizontal offset", min_value=-30000, max_value=30000, step=1, value=0
-    )
-with col3:
-    ticker_dy = st.slider(
-        "Vertical offset", min_value=-30000, max_value=30000, step=1, value=-1000
-    )
+# 
 
 # Original time series chart. Omitted `get_chart` for clarity
 source = data
-# chart = get_chart(source)
 
-# # Input annotations
-# ANNOTATIONS = [
-#     ("Mar 01, 2008", "Pretty good day for GOOG"),
-#     ("Dec 01, 2007", "Something's going wrong for GOOG & AAPL"),
-#     ("Nov 01, 2008", "Market starts again thanks to..."),
-#     ("Dec 01, 2009", "Small crash for GOOG after..."),
-# ]
 
 # Create a chart with annotations
 annotations_df = pd.DataFrame(source, columns=["timestamp", "sentiment","tweet","bp_label"])
@@ -131,3 +110,8 @@ c = alt.Chart(annotations_df).mark_point().encode(
 
 # Display both charts together
 st.altair_chart((c).interactive(), theme="streamlit",use_container_width=True)
+
+
+st.subheader("Dataset")
+
+st.dataframe(data, width=800, height=500)
