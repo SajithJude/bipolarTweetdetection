@@ -63,7 +63,22 @@ st.title("Bipolar Disorder Analytical Diagnostics")
 
 # 
 
-# Original time series chart. Omitted `get_chart` for clarity
+########### select CSV##################
+directory = '/data/'
+csv_files = [f for f in os.listdir(directory) if f.endswith('.csv')]
+
+# Create a selectbox widget to allow the user to choose a CSV file
+selected_file = st.selectbox('Select a User', csv_files)
+
+# Use pandas to read the selected file into a dataframe
+data = pd.read_csv(os.path.join(directory, selected_file))
+
+sentiments = []
+for text in data['tweet']:
+    sentiment = get_sentiment(str(text))
+    sentiments.append(sentiment)
+# Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
+data['sentiment'] = sentiments
 source = data
 
 
@@ -91,22 +106,7 @@ c = alt.Chart(annotations_df).mark_point().encode(
 )
 
 
-########### select CSV##################
-directory = '/data/'
-csv_files = [f for f in os.listdir(directory) if f.endswith('.csv')]
 
-# Create a selectbox widget to allow the user to choose a CSV file
-selected_file = st.selectbox('Select a User', csv_files)
-
-# Use pandas to read the selected file into a dataframe
-data = pd.read_csv(os.path.join(directory, selected_file))
-
-sentiments = []
-for text in data['tweet']:
-    sentiment = get_sentiment(str(text))
-    sentiments.append(sentiment)
-# Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
-data['sentiment'] = sentiments
 
 
 
