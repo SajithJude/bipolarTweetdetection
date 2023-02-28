@@ -26,7 +26,7 @@ if uploaded_file is not None:
     for text in df_sorted['tweet']:
         sentiment = get_sentiment(str(text))
         sentiments.append(sentiment)
-    df_sorted['sentiments'] = sentiment
+    df_sorted['sentiment'] = sentiments
     # Display the result
     st.table(df_sorted)
 
