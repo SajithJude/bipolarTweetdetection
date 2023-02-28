@@ -17,7 +17,12 @@ if uploaded_file is not None:
     # Calculate the time difference between rows in hours
     df_sorted['time_diff_hours'] = (df_sorted['timestamp'] - df_sorted['timestamp'].shift()).dt.total_seconds() / 3600
     df_sorted['hour_offset'] = (df_sorted['timestamp'] - df_sorted['timestamp'].min()).astype('timedelta64[h]')
-
+    sentiments = []
+    keywords = []
+    for text in df_sorted['tweet']:
+        sentiment = get_sentiment(str(text))
+        sentiments.append(sentiment)
+    df_sorted['sentiments'] = sentiment
     # Display the result
     st.table(df_sorted)
 
