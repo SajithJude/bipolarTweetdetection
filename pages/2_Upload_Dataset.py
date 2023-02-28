@@ -91,19 +91,19 @@ from st_aggrid import GridUpdateMode, DataReturnMode
 ### we define a timestamp_column dictionary that contains the column definition for the timestamp column. We use the valueFormatter property to format the timestamp values using the toLocaleString method, which formats the timestamp as "yyyy-mm-dd hh:mm:ss". We use the comparator property to sort the timestamp values by converting them to JavaScript Date objects using the new Date constructor, and then comparing the getTime values of the two dates.Note that we're using the aggrid library, which is a Python wrapper for the JavaScript AgGrid library. If you're using the JavaScript version of AgGrid directly, you'll need to use the appropriate syntax to define the column definition and the valueFormatter and comparator properties.
 ###
 
-timestamp_column = {
-    "field": "timestamp",
-    "headerName": "timestamp",
-    "valueFormatter": 'new Date(value).toLocaleString("en-US", {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"})',
-    "comparator": "(a,b) => new Date(a).getTime() - new Date(b).getTime()",
-}
+# timestamp_column = {
+#     "field": "timestamp",
+#     "headerName": "timestamp",
+#     "valueFormatter": 'new Date(value).toLocaleString("en-US", {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"})',
+#     "comparator": "(a,b) => new Date(a).getTime() - new Date(b).getTime()",
+# }
 
 gb = GridOptionsBuilder.from_dataframe(shows)
 # enables pivoting on all columns, however i'd need to change ag grid to allow export of pivoted/grouped data, however it select/filters groups
 gb.configure_default_column(enablePivot=True,editable=True, enableValue=True, enableRowGroup=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 gb.configure_side_bar()  # side_bar is clearly a typo :) should by sidebar
-gb.configure_column("timestamp", timestamp_column)
+# gb.configure_column("timestamp", timestamp_column)
 gridOptions = gb.build()
 
 st.success(
