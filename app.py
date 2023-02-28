@@ -56,7 +56,8 @@ if selected_file:
     # Add a new column 'sentiment' to the DataFrame with the calculated sentiment scores
     data['sentiment'] = sentiments
     # data['keywords'] = keywords
-    global source = data
+    global source
+    source = data
     timeline = st.slider("TimeLine", min_value=2008,
     max_value=2021,
     value=(2010),
