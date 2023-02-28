@@ -68,7 +68,7 @@ if selected_file:
     # st.sidebar.write("Final Year Undergraduate")
     # st.sidebar.write("IIT (University of Westminster)")
 
-with st.beta_expander("Click to expand Graph"):
+# with st.beta_expander("Click to expand Graph"):
     # st.write("Content inside the expandable section")
     # Create a chart with annotations
 
