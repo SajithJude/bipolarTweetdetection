@@ -38,4 +38,4 @@ if uf is not None:
     line1 = chart1.transform_filter(selection).mark_line(color='black')
 
     # Add the chart and line to the Streamlit app
-    st.altair_chart((chart1 + line1).interactive()), use_container_width=True)
+    st.altair_chart((chart1 + line1).interactive(), use_container_width=True)
