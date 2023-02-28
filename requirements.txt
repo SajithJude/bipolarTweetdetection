@@ -4,3 +4,5 @@ matplotlib
 textblob
 torch
 transformers
+streamlit-aggrid==0.2.2-2
+click==8

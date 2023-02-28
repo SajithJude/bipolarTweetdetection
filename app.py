@@ -17,7 +17,7 @@ def get_keyword(text):
     return TextBlob(text).noun_phrases
 
 st.set_page_config(
-    page_title="Instancy", page_icon=":brain:", layout="wide"
+    page_title="Bipolar Tweet Prediction", page_icon=":brain:", layout="wide"
 )
 
 
