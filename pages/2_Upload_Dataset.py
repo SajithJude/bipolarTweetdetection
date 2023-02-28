@@ -93,7 +93,7 @@ from st_aggrid import GridUpdateMode, DataReturnMode
 
 timestamp_column = {
     "field": "timestamp",
-    "headerName": "Timestamp",
+    "headerName": "timestamp",
     "valueFormatter": 'new Date(value).toLocaleString("en-US", {year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"})',
     "comparator": "(a,b) => new Date(a).getTime() - new Date(b).getTime()",
 }
@@ -103,7 +103,7 @@ gb = GridOptionsBuilder.from_dataframe(shows)
 gb.configure_default_column(enablePivot=True, enableValue=True, enableRowGroup=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 gb.configure_side_bar()  # side_bar is clearly a typo :) should by sidebar
-gb.configure_column("timestamp", **timestamp_column)
+gb.configure_column("timestamp", timestamp_column)
 gridOptions = gb.build()
 
 st.success(
