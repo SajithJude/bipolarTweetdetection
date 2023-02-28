@@ -29,7 +29,7 @@ if uploaded_file is not None:
         x='timestamp:T',
         y='sentiment:Q',
         color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
-        tooltip=['description:N']
+        tooltip=['tweet:N']
     ).add_selection(selection)
 
     # Add a line that follows the selected timestamp
