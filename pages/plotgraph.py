@@ -21,7 +21,7 @@ if uf is not None:
     if show_true:
         dta = df2
     else:
-        dta = df2[df2['bp_label'] == 'FALSE']
+        dta = df2[df2['bp_label'] == False]
 
     # Create a selection for the tooltip
     selection = alt.selection_single(fields=['timestamp'], nearest=True, on='mouseover', empty='none')
