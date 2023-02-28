@@ -9,7 +9,7 @@ uf = st.file_uploader("Choose a CSV file", type=["csv"])
 if uf is not None:
     df2 = pd.read_csv(uf)
     df2['timestamp'] = pd.to_datetime(df2['timestamp'])
-    st.table(df2.head(10))
+    st.table(df2.head(5))
         # Convert 'timestamp' column to a pa
     # Load dta from CSV file
     # df2 = pd.read_csv('data.csv')
@@ -19,15 +19,18 @@ if uf is not None:
 
     # Filter the data based on the checkbox value
     if show_true:
+
         dta = df2
     else:
+
         dta = df2[df2['bp_label'] == False]
+
 
     # Create a selection for the tooltip
     selection = alt.selection_single(fields=['timestamp'], nearest=True, on='mouseover', empty='none')
 
     # Create the chart
-    chart1 = alt.Chart(dta).mark_circle().encode(
+    chart1 = alt.Chart(dta).mark_circle(size=100).encode(
         x='timestamp:T',
         y='sentiment:Q',
         color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
