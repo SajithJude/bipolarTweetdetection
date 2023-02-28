@@ -28,7 +28,7 @@ if uploaded_file is not None:
     chart = alt.Chart(data).mark_circle().encode(
         x='timestamp:T',
         y='sentiment:Q',
-        color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
+        color=alt.Color('bp_label:N', scale=alt.Scale(domain=['TRUE', 'FALSE'], range=['red', 'blue'])),
         tooltip=['tweet:N']
     ).add_selection(selection)
 
