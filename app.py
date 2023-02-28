@@ -8,7 +8,7 @@ import os
 nltk.download('punkt')
 nltk.download('brown')
 
-alt.themes.enable("streamlit")
+# alt.themes.enable("streamlit")
 # Define a function to get sentiment analysis
 def get_sentiment(text):
     return TextBlob(text).sentiment.polarity
