@@ -12,7 +12,7 @@ def get_sentiment(text):
 def get_keyword(text):
     return TextBlob(text).noun_phrases
 
-annotations_df = pd.DataFrame(source, columns=["timestamp", "sentiment","tweet","bp_label"])
+annotations_df = pd.DataFrame(global source, columns=["timestamp", "sentiment","tweet","bp_label"])
 annotations_df.timestamp = pd.to_datetime(annotations_df.timestamp)
 annotations_df["y"] = 0
 
