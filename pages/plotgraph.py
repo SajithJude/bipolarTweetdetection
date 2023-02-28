@@ -8,6 +8,7 @@ uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
 # If a file was uploaded, read the contents into a Pandas DataFrame
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
+    df['timestamp'] = pd.to_datetime(df['timestamp'])
         # Convert 'timestamp' column to a pa
     # Load data from CSV file
     # df = pd.read_csv('data.csv')
