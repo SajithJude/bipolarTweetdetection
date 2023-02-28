@@ -19,7 +19,7 @@ if uploaded_file is not None:
     if show_true:
         data = df
     else:
-        data = df[df['label'] == False]
+        data = df[df['bp_label'] == False]
 
     # Create a selection for the tooltip
     selection = alt.selection_single(fields=['timestamp'], nearest=True, on='mouseover', empty='none')
