@@ -28,7 +28,7 @@ if uploaded_file is not None:
         sentiments.append(sentiment)
     df_sorted['sentiment'] = sentiments
     # Display the result
-    st.table(df_sorted(10))
+    st.table(df_sorted.head(10))
 
     csv = df_sorted.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()
