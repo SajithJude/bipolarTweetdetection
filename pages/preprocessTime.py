@@ -1,6 +1,10 @@
 import streamlit as st
 import pandas as pd
+from textblob import TextBlob
 
+
+def get_sentiment(text):
+    return TextBlob(text).sentiment.polarity
 # Create file uploader and define accepted file types
 uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
 
