@@ -24,5 +24,5 @@ if st.button('Plot'):
     mpld3.plugins.connect(fig, tooltip)
 
     # Show the plot
-    mpld3.show(fig)
+mpld3.show(fig)
 
