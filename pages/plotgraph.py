@@ -13,8 +13,27 @@ x_axis = st.sidebar.selectbox('Select X-axis', ['timestamp', 'bp_label', 'hour',
 y_axis = st.sidebar.selectbox('Select Y-axis', ['timestamp', 'bp_label', 'hour', 'weekday', 'patient_index'])
 patient_filter = st.sidebar.selectbox("Select a patient", list(range(1, 26)))
 
-y_low, y_up = st.sidebar.slider('Select Y limit range',  0, 2400, (0, 12))
-x_low, x_up = st.sidebar.slider('Select X limit range', 0, 2400, (0, 12))
+# This code first loads the data from a CSV file into a DataFrame,
+#  and assumes that the timestamp column has already been parsed as dates.
+#   It then uses the value_counts method to count the occurrences of each hour 
+#   in the timestamp column, and finds the index (i.e. hour) of the most common
+#    value using the idxmax method. It then prints out the most common timestamp 
+#    range by adding 1 to the index to get the end of the hour range.
+# Similarly, it counts the occurrences of each weekday in the weekday column using 
+# value_counts, finds the index of the most common value using idxmax, and prints out
+#  the most common weekday.
+
+
+x_axis_counts = df[x_axis].dt.hour.value_counts()
+y_axis_counts = df[y_axis].dt.hour.value_counts()
+
+mostcomonXaxis = x_axis_counts.idxmax()
+mostcomonYaxis = y_axis_counts.idxmax()
+
+
+
+y_low, y_up = st.sidebar.slider('Select Y limit range',  0, mostcomonYaxis, (0, timestamp_counts))
+x_low, x_up = st.sidebar.slider('Select X limit range', 0, mostcomonXaxis, (0, timestamp_counts))
 
 # Filter the data based on the selected patient index
 filtered_data = data[data['patient_index'] == patient_filter]
