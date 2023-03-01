@@ -36,4 +36,4 @@ chart1 = alt.Chart(filtered_data).mark_circle(size=100).encode(
 line1 = chart1.transform_filter(selection).mark_line(color='black')
 
 # Add the chart and line to the Streamlit app
-st.altair_chart(chart1+line1, use_container_width=True)
+st.altair_chart(chart1, use_container_width=True)
