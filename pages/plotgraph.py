@@ -12,6 +12,8 @@ data = pd.read_csv("data/streamlitdatabase.csv", parse_dates=['timestamp'])
 x_axis = st.sidebar.selectbox('Select X-axis', ['timestamp', 'bp_label', 'hour', 'weekday', 'patient_index'])
 y_axis = st.sidebar.selectbox('Select Y-axis', ['timestamp', 'bp_label', 'hour', 'weekday', 'patient_index'])
 patient_filter = st.sidebar.slider('Patient Index', 1, 25, 1)
+y_low, y_up = st.sidebar.slider('Select Y limit range',  0, 2400, (0, 12))
+x_low, x_up = st.sidebar.slider('Select X limit range', 0, 2400, (0, 12))
 
 # Filter the data based on the selected patient index
 filtered_data = data[data['patient_index'] == patient_filter]
@@ -44,8 +46,6 @@ plt.ylabel(y_axis)
 colorbar = plt.colorbar(scatter)
 colorbar.set_label("Bipolar Label")
 
-y_low, y_up = st.slider('Select Y limit range',  0, 2400, (0, 12))
-x_low, x_up = st.slider('Select X limit range', 0, 2400, (0, 12))
 
 
 plt.title(f'Scatter Plot of {x_axis} vs {y_axis} for Patient {patient_filter}')
