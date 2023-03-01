@@ -3,6 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import mpld3
 from mpld3 import plugins
+import streamlit.components.v1 as components
 
 # Load the data
 data = pd.read_csv("data/streamlitdatabase.csv", parse_dates=['timestamp'])
@@ -34,4 +35,4 @@ plt.xlim(-0.5, 1.5)
 html_graph = mpld3.fig_to_html(fig)
 
 # Display the interactive HTML graph
-st.markdown(html_graph, unsafe_allow_html=True)
+components.html(html_graph, unsafe_allow_html=True)
