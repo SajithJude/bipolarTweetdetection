@@ -18,14 +18,14 @@ st.table(df2.head(5))
 show_true = st.slider('Filter by Label', 0, 1, 1)
 
 # Filter the data based on the slider value
-filtered_data = dataframe[dataframe['bp_label'] == bool(show_true)]
+filtered_data = df2[df2['bp_label'] == bool(show_true)]
 
 
 # Create a selection for the tooltip
 selection = alt.selection_single(fields=['timestamp'], nearest=True, on='mouseover', empty='none')
 
 # Create the chart
-chart1 = alt.Chart(dta).mark_circle(size=100).encode(
+chart1 = alt.Chart(filtered_data).mark_circle(size=100).encode(
     x='timestamp:T',
     y='bp_label:N',
     color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
