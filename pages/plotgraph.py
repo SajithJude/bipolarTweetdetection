@@ -35,4 +35,4 @@ plt.xlim(-0.5, 1.5)
 html_graph = mpld3.fig_to_html(fig)
 
 # Display the interactive HTML graph
-components.html(html_graph)
+components.html(html_graph, height=600)
