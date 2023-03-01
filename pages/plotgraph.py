@@ -64,7 +64,7 @@ with right_column:
     plt.xlim(x_low, x_up)
 
     # Convert the plot to an interactive HTML
-    html_graph = mpld3.fig_to_html(fig,use_container_width=True)
+    html_graph = mpld3.fig_to_html(fig)
 
     # Display the interactive HTML graph
     components.html(html_graph, height=600)
