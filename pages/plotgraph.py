@@ -67,4 +67,4 @@ with right_column:
     html_graph = mpld3.fig_to_html(fig)
 
     # Display the interactive HTML graph
-    components.html(html_graph, height=600,use_container_width=True)
+    components.html(html_graph,use_container_width=True)
