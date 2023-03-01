@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import mpld3
 
 # Load the data
-data = pd.read_csv('data/finalPreprocess_for_Training.csv', parse_dates=['timestamp'])
+data = pd.read_csv('data/streamlitdatabase.csv', parse_dates=['timestamp'])
 
 # Sidebar filters
 x_var = st.sidebar.selectbox('X-axis variable', ['hour', 'weekday', 'timestamp'])
