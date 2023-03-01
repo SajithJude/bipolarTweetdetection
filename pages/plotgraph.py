@@ -11,7 +11,7 @@ st.table(df2.head(5))
 # df2 = pd.read_csv('data.csv')
 
 # Create a checkbox to toggle data points with true/false labels
-show_true = st.checkbox('Show True Labels')
+# show_true = st.checkbox('Show True Labels')
 
 # Filter the data based on the checkbox value
 # Create a slider to toggle data points with true/false labels
