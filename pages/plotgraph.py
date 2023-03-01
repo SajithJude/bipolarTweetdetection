@@ -24,8 +24,8 @@ patient_filter = st.sidebar.selectbox("Select a patient", list(range(1, 26)))
 #  the most common weekday.
 
 
-x_axis_counts = df[x_axis].dt.hour.value_counts()
-y_axis_counts = df[y_axis].dt.hour.value_counts()
+x_axis_counts = data[x_axis].dt.hour.value_counts()
+y_axis_counts = data[y_axis].dt.hour.value_counts()
 
 mostcomonXaxis = x_axis_counts.idxmax()
 mostcomonYaxis = y_axis_counts.idxmax()
