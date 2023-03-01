@@ -20,15 +20,6 @@ if uf is not None:
     # Filter the data based on the checkbox value
     if show_true:
         dta = df2
-        chart1 = alt.Chart(dta).mark_point(size=10).encode(
-            x='timestamp:T',
-            y='sentiment:Q',
-            color=alt.Color('bp_label', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
-            tooltip=['tweet']
-        ).interactive().add_selection(selection)
-        st.altair_chart((chart1), use_container_width=True)
-
-
     else:
         dta = df2[df2['bp_label'] == False]
 
@@ -40,13 +31,12 @@ if uf is not None:
         chart1 = alt.Chart(dta).mark_point(size=10).encode(
             x='timestamp:T',
             y='sentiment:Q',
-            color=alt.Color('bp_label', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
+            color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
             tooltip=['tweet']
         ).interactive().add_selection(selection)
-        st.altair_chart((chart1), use_container_width=True)
-
 
     # Add a line that follows the selected timestamp
-    line1 = chart1.transform_filter(selection).mark_line(color='black')
+    # line1 = chart1.transform_filter(selection).mark_line(color='black')
 
     # Add the chart and line to the Streamlit app
+    st.altair_chart((chart1), use_container_width=True)
