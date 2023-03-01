@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import mpld3
 from mpld3 import plugins
 import streamlit.components.v1 as components
-
+st.set_page_config(layout="wide")
 # Load the data
 data = pd.read_csv("data/streamlitdatabase.csv", parse_dates=['timestamp'])
 # st.table(data)
