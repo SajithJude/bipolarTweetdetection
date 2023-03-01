@@ -28,8 +28,8 @@ plugins.connect(fig, tooltip)
 plt.xlabel(x_axis)
 plt.ylabel(y_axis)
 plt.title(f'Scatter Plot of {x_axis} vs {y_axis} for Patient {patient_filter}')
-plt.ylim(-0.5, 1.5)
-plt.xlim(-0.5, 1.5)
+plt.ylim(0, 25)
+plt.xlim(0, 100)
 
 # Convert the plot to an interactive HTML
 html_graph = mpld3.fig_to_html(fig)
