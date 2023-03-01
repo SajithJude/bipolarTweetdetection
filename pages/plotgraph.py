@@ -25,15 +25,15 @@ if uf is not None:
 
 
     # Create a selection for the tooltip
-        selection = alt.selection_single(fields=['timestamp'], nearest=True, on='mouseover', empty='none')
+    selection = alt.selection_single(fields=['timestamp'], nearest=True, on='mouseover', empty='none')
 
-        # Create the chart
-        chart1 = alt.Chart(dta).mark_point(size=10).encode(
-            x='timestamp:T',
-            y='sentiment:Q',
-            color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
-            tooltip=['tweet']
-        ).interactive()
+    # Create the chart
+    chart1 = alt.Chart(dta).mark_point(size=10).encode(
+        x='timestamp:T',
+        y='sentiment:Q',
+        color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
+        tooltip=['tweet']
+    ).interactive()
 
     # Add a line that follows the selected timestamp
     # line1 = chart1.transform_filter(selection).mark_line(color='black')
