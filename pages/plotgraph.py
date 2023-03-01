@@ -15,7 +15,6 @@ left_column, right_column = st.beta_columns([1,3])
 
 # Add elements to the left column
 with left_column:
-    st.write("This is the left column.")
     # Add more elements as needed
 
     x_axis = st.selectbox('Select X-axis', ['timestamp', 'bp_label', 'hour', 'weekday', 'patient_index'])
@@ -68,4 +67,4 @@ plt.xlim(x_low, x_up)
 html_graph = mpld3.fig_to_html(fig)
 
 # Display the interactive HTML graph
-components.html(html_graph, height=300)
+components.html(html_graph, width=600)
