@@ -9,8 +9,8 @@ import streamlit.components.v1 as components
 data = pd.read_csv("data/streamlitdatabase.csv", parse_dates=['timestamp'])
 # st.table(data)
 # Sidebar filters
-x_axis = st.sidebar.selectbox('Select X-axis', ['timestamp', 'bp_label', 'hour', 'weekday', 'patient_index'])
-y_axis = st.sidebar.selectbox('Select Y-axis', ['timestamp', 'bp_label', 'hour', 'weekday', 'patient_index'])
+x_axis = st.sidebar.selectbox('Select X-axis', ['timestamp', 'hour', 'weekday'])
+y_axis = st.sidebar.selectbox('Select Y-axis', [ 'bp_label','patient_index'])
 patient_filter = st.sidebar.selectbox("Select a patient", list(range(1, 26)))
 
 # This code first loads the data from a CSV file into a DataFrame,
