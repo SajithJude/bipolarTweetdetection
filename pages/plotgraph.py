@@ -21,7 +21,6 @@ if uf is not None:
     if show_true:
         dta = df2
     else:
-
         dta = df2[df2['bp_label'] == False]
 
 
@@ -29,7 +28,7 @@ if uf is not None:
     selection = alt.selection_single(fields=['timestamp'], nearest=True, on='mouseover', empty='none')
 
     # Create the chart
-    chart1 = alt.Chart(dta).mark_point().encode(
+    chart1 = alt.Chart(dta).mark_point(size=10).encode(
         x='timestamp:T',
         y='sentiment:Q',
         color=alt.Color('bp_label', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
