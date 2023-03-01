@@ -29,7 +29,7 @@ if uf is not None:
     selection = alt.selection_single(fields=['timestamp'], nearest=True, on='mouseover', empty='none')
 
     # Create the chart
-    chart1 = alt.Chart(dta).mark_point  ().encode(
+    chart1 = alt.Chart(dta).mark_point().encode(
         x='timestamp:T',
         y='sentiment:Q',
         color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
@@ -37,7 +37,7 @@ if uf is not None:
     ).add_selection(selection)
 
     # Add a line that follows the selected timestamp
-    # line1 = chart1.transform_filter(selection).mark_line(color='black')
+    line1 = chart1.transform_filter().mark_line(color='black')
 
     # Add the chart and line to the Streamlit app
     st.altair_chart((chart1).interactive(), use_container_width=True)
