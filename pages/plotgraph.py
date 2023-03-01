@@ -18,7 +18,7 @@ show_true = st.checkbox('Show True Labels')
 show_true = st.slider('Filter by Label', 0, 1, 1)
 
 # Filter the data based on the slider value
-filtered_data = dataframe[dataframe['label'] == bool(show_true)]
+filtered_data = dataframe[dataframe['bp_label'] == bool(show_true)]
 
 
 # Create a selection for the tooltip
