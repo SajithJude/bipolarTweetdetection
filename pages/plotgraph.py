@@ -21,7 +21,7 @@ fig, ax = plt.subplots()
 scatter = ax.scatter(filtered_data[x_axis], filtered_data[y_axis], alpha=0.5)
 
 # Add tooltip with tweet text
-tooltip = plugins.PointHTMLTooltip(scatter, labels=list(filtered_data['tweet']))
+tooltip = plugins.PointHTMLTooltip(scatter, labels=list(filtered_data['tweet']),cmap="coolwarm")
 plugins.connect(fig, tooltip)
 
 # Format the plot
