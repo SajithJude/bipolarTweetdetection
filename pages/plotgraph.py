@@ -32,7 +32,7 @@ if uf is not None:
     chart1 = alt.Chart(dta).mark_point().encode(
         x='timestamp:T',
         y='sentiment:Q',
-        color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
+        color=alt.Color('bp_label', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
         tooltip=['tweet']
     ).add_selection(selection)
 
