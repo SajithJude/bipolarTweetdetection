@@ -32,8 +32,8 @@ mostcomonYaxis = y_axis_counts.idxmax()
 
 
 
-y_low, y_up = st.sidebar.slider('Select Y limit range',  0, mostcomonYaxis, (0, timestamp_counts))
-x_low, x_up = st.sidebar.slider('Select X limit range', 0, mostcomonXaxis, (0, timestamp_counts))
+y_low, y_up = st.sidebar.slider('Select Y limit range',  0, mostcomonYaxis, (0, x_axis_counts))
+x_low, x_up = st.sidebar.slider('Select X limit range', 0, mostcomonXaxis, (0, y_axis_counts))
 
 # Filter the data based on the selected patient index
 filtered_data = data[data['patient_index'] == patient_filter]
