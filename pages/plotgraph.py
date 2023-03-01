@@ -18,15 +18,21 @@ filtered_data = data[data['patient_index'] == patient_filter]
 
 # Create the scatter plot
 fig, ax = plt.subplots()
-scatter = ax.scatter(filtered_data[x_axis], filtered_data[y_axis], alpha=0.5)
+scatter = ax.scatter(filtered_data[x_axis], filtered_data[y_axis], alpha=0.5,cmap="coolwarm")
 
 # Add tooltip with tweet text
-tooltip = plugins.PointHTMLTooltip(scatter, labels=list(filtered_data['tweet']),cmap="coolwarm")
+tooltip = plugins.PointHTMLTooltip(scatter, labels=list(filtered_data['tweet']))
 plugins.connect(fig, tooltip)
 
 # Format the plot
 plt.xlabel(x_axis)
 plt.ylabel(y_axis)
+
+
+colorbar = plt.colorbar(scatter)
+colorbar.set_label("Bipolar Label")
+
+
 plt.title(f'Scatter Plot of {x_axis} vs {y_axis} for Patient {patient_filter}')
 plt.ylim(0, 25)
 plt.xlim(0, 100)
