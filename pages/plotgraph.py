@@ -22,6 +22,7 @@ if st.button('Plot'):
     # Add tooltip with tweet text
     tooltip = mpld3.plugins.PointHTMLTooltip(scatter, labels=data_filtered['tweet'])
     mpld3.plugins.connect(fig, tooltip)
-    # Show the plot
-    mpld3.show(fig)
 
+    # Convert plot to HTML and display
+    html = mpld3.fig_to_html(fig)
+    st.write(html, unsafe_allow_html=True)
