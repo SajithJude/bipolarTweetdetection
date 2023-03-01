@@ -33,7 +33,7 @@ if uf is not None:
         x='timestamp:T',
         y='sentiment:Q',
         color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
-        tooltip=['tweet:N']
+        tooltip=['tweet']
     ).add_selection(selection)
 
     # Add a line that follows the selected timestamp
