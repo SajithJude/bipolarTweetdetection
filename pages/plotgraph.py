@@ -1,30 +1,37 @@
-import streamlit as st
 import pandas as pd
+import streamlit as st
 import matplotlib.pyplot as plt
 import mpld3
-import streamlit.components.v1 as components
+from mpld3 import plugins
 
 # Load the data
-data = pd.read_csv('data/streamlitdatabase.csv', parse_dates=['timestamp'])
+data = pd.read_csv("data/streamlitdatabase.csv", parse_dates=['timestamp'])
 
 # Sidebar filters
-x_var = st.selectbox('X-axis variable', ['hour', 'weekday', 'timestamp'])
-y_var = st.selectbox('Y-axis variable', ['hour', 'weekday', 'timestamp'])
-patient_filter = st.slider('Patient index', 1, 25, 1)
+x_axis = st.sidebar.selectbox('Select X-axis', ['timestamp', 'bp_label', 'hour', 'weekday', 'patient_index'])
+y_axis = st.sidebar.selectbox('Select Y-axis', ['timestamp', 'bp_label', 'hour', 'weekday', 'patient_index'])
+patient_filter = st.sidebar.slider('Patient Index', 1, 25, 1)
 
-# Filter the data
-data_filtered = data[data['patient_index'] == patient_filter]
+# Filter the data based on the selected patient index
+filtered_data = data[data['patient_index'] == patient_filter]
 
-# if st.button('Plot'):
 # Create the scatter plot
-
 fig, ax = plt.subplots()
-scatter = ax.scatter(data_filtered[x_var], data_filtered[y_var], c=data_filtered['bp_label'])
+scatter = ax.scatter(filtered_data[x_axis], filtered_data[y_axis], alpha=0.5)
 
 # Add tooltip with tweet text
-tooltip = mpld3.plugins.PointHTMLTooltip(scatter, labels=data_filtered['tweet'])
-mpld3.plugins.connect(fig, tooltip)
+tooltip = plugins.PointHTMLTooltip(scatter, labels=list(filtered_data['tweet']))
+plugins.connect(fig, tooltip)
 
-# Convert plot to HTML and display
-html = mpld3.fig_to_html(fig)
-components.html(html, unsafe_allow_html=True)
+# Format the plot
+plt.xlabel(x_axis)
+plt.ylabel(y_axis)
+plt.title(f'Scatter Plot of {x_axis} vs {y_axis} for Patient {patient_filter}')
+plt.ylim(-0.5, 1.5)
+plt.xlim(-0.5, 1.5)
+
+# Convert the plot to an interactive HTML
+html_graph = mpld3.fig_to_html(fig)
+
+# Display the interactive HTML graph
+st.markdown(html_graph, unsafe_allow_html=True)
