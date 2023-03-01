@@ -25,7 +25,7 @@ if uf is not None:
 
 
     # Create a selection for the tooltip
-        selection = alt.selection_single(fields=['timestamp'], nearest=True, on='mouseover', empty='none')
+        selection = alt.selection_single(fields=['timestamp:T'], nearest=True, on='mouseover', empty='none')
 
         # Create the chart
         chart1 = alt.Chart(dta).mark_point(size=10).encode(
