@@ -29,7 +29,7 @@ chart1 = alt.Chart(dta).mark_circle(size=100).encode(
     y='bp_label:N',
     color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
     tooltip=['tweet']
-).add_selection(selection)
+).add_selection(selection).interactive()
 
 # Add a line that follows the selected timestamp
 line1 = chart1.transform_filter(selection).mark_line(color='black')
