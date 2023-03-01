@@ -1,39 +1,27 @@
 import streamlit as st
 import pandas as pd
-import altair as alt
-alt.themes.enable("streamlit")
+import matplotlib.pyplot as plt
+import mpld3
 
-df2 = pd.read_csv("data/user_1.csv")
-df2['timestamp'] = pd.to_datetime(df2['timestamp'])
-st.table(df2.head(5))
-    # Convert 'timestamp' column to a pa
-# Load dta from CSV file
-# df2 = pd.read_csv('data.csv')
+# Load the data
+data = pd.read_csv('data/finalPreprocess_for_Training.csv', parse_dates=['timestamp'])
 
-# Create a checkbox to toggle data points with true/false labels
-# show_true = st.checkbox('Show True Labels')
+# Sidebar filters
+x_var = st.sidebar.selectbox('X-axis variable', ['hour', 'weekday', 'timestamp'])
+y_var = st.sidebar.selectbox('Y-axis variable', ['hour', 'weekday', 'timestamp'])
+patient_filter = st.sidebar.slider('Patient index', 1, 25, 1)
 
-# Filter the data based on the checkbox value
-# Create a slider to toggle data points with true/false labels
-show_true = st.slider('Filter by Label', 0, 1, 1)
+# Filter the data
+data_filtered = data[data['patient_index'] == patient_filter]
 
-# Filter the data based on the slider value
-filtered_data = df2[df2['bp_label'] == bool(show_true)]
+# Create the scatter plot
+fig, ax = plt.subplots()
+scatter = ax.scatter(data_filtered[x_var], data_filtered[y_var], c=data_filtered['bp_label'])
 
+# Add tooltip with tweet text
+tooltip = mpld3.plugins.PointHTMLTooltip(scatter, labels=data_filtered['tweet'])
+mpld3.plugins.connect(fig, tooltip)
 
-# Create a selection for the tooltip
-selection = alt.selection_single(fields=['timestamp'], nearest=True, on='mouseover', empty='none')
+# Show the plot
+mpld3.show(fig)
 
-# Create the chart
-chart1 = alt.Chart(filtered_data).mark_circle(size=100).encode(
-    x='timestamp:T',
-    y='bp_label:N',
-    color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
-    tooltip=['tweet']
-).add_selection(selection)
-
-# Add a line that follows the selected timestamp
-line1 = chart1.transform_filter(selection).mark_line(color='black')
-
-# Add the chart and line to the Streamlit app
-st.altair_chart((chart1).interactive(), use_container_width=True)
