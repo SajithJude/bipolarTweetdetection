@@ -29,7 +29,7 @@ if uf is not None:
     selection = alt.selection_single(fields=['timestamp'], nearest=True, on='mouseover', empty='none')
 
     # Create the chart
-    chart1 = alt.Chart(dta).mark_circle().encode(
+    chart1 = alt.Chart(dta).mark_point  ().encode(
         x='timestamp:T',
         y='sentiment:Q',
         color=alt.Color('bp_label:N', scale=alt.Scale(domain=['True', 'False'], range=['red', 'blue'])),
