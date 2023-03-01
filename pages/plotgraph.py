@@ -11,7 +11,8 @@ data = pd.read_csv("data/streamlitdatabase.csv", parse_dates=['timestamp'])
 # Sidebar filters
 x_axis = st.sidebar.selectbox('Select X-axis', ['timestamp', 'bp_label', 'hour', 'weekday', 'patient_index'])
 y_axis = st.sidebar.selectbox('Select Y-axis', ['timestamp', 'bp_label', 'hour', 'weekday', 'patient_index'])
-patient_filter = st.sidebar.slider('Patient Index', 1, 25, 1)
+patient_filter = st.sidebar.selectbox("Select a patient", list(range(1, 26)))
+
 y_low, y_up = st.sidebar.slider('Select Y limit range',  0, 2400, (0, 12))
 x_low, x_up = st.sidebar.slider('Select X limit range', 0, 2400, (0, 12))
 
