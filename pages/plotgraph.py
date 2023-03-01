@@ -59,12 +59,12 @@ with right_column:
 
 
 
-plt.title(f'Scatter Plot of {x_axis} vs {y_axis} for Patient {patient_filter}')
-plt.ylim(y_low, y_up)
-plt.xlim(x_low, x_up)
+    plt.title(f'Scatter Plot of {x_axis} vs {y_axis} for Patient {patient_filter}')
+    plt.ylim(y_low, y_up)
+    plt.xlim(x_low, x_up)
 
-# Convert the plot to an interactive HTML
-html_graph = mpld3.fig_to_html(fig)
+    # Convert the plot to an interactive HTML
+    html_graph = mpld3.fig_to_html(fig)
 
-# Display the interactive HTML graph
-components.html(html_graph, width=600)
+    # Display the interactive HTML graph
+    components.html(html_graph, width=600)
