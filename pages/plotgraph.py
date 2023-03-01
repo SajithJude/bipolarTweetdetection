@@ -10,7 +10,7 @@ data = pd.read_csv("data/streamlitdatabase.csv", parse_dates=['timestamp'])
 # st.table(data)
 # Sidebar filters
 
-left_column, right_column = st.beta_columns([1,3])
+left_column, right_column = st.beta_columns([1,6])
 
 
 # Add elements to the left column
