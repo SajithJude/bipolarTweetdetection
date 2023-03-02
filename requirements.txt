@@ -1,4 +1,6 @@
 streamlit
+scikit-learn
+pickle5
 pandas
 matplotlib
 textblob
@@ -7,5 +9,3 @@ transformers
 streamlit-aggrid==0.2.2-2
 click==8
 mpld3
-scikit-learn
-pickle
